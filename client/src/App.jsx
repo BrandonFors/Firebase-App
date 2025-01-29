@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
 import { db } from './firebase/config'
 import { getFirestore, collection, getDocs, QuerySnapshot } from 'firebase/firestore';
-
-
+import ReactflowMap from './ReactflowMap';
 function App() {
   const [data, setData] = useState([]);
   const [isPending, setIsPending] = useState(false);
@@ -20,8 +19,9 @@ function App() {
     fetchData();
   },[]);
   return (
-    <>
-    </>
+    <div>
+      <ReactflowMap/>
+    </div>
   )
 }
 

@@ -1,0 +1,39 @@
+.mindmap-node {
+  padding: 20px;
+  border: 2px solid #FFA500; /* Orange border */
+  border-radius: 12px; /* Rounded corners */
+  background-color: #FFCC00; /* Light orange background */
+  color: #333; /* Text color */
+  font-size: 14px; /* Font size for the label */
+  text-align: center; /* Center the label text */
+  width: 120px; /* Adjust width as needed */
+  height: 120px; /* Adjust height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* To position the handles inside the node */
+}
+
+.mindmap-node .label {
+  font-weight: bold; /* Make the label bold */
+  color: #333; /* Text color */
+}
+
+.react-flow__handle {
+  background-color: #F6AD55; /* Handle color (similar to edge color) */
+  border-radius: 50%; /* Circular handles */
+  width: 10px;
+  height: 10px;
+}
+
+.react-flow__handle.target {
+  top: 50%;
+  left: 100%;
+  transform: translate(-100%, -50%);
+}
+
+.react-flow__handle.source {
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+}
