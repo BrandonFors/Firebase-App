@@ -2,10 +2,20 @@ import { useState, useEffect } from 'react'
 import { db } from './firebase/config'
 import { getFirestore, collection, getDocs, QuerySnapshot } from 'firebase/firestore';
 import ReactflowMap from './ReactflowMap';
+import SidePanel from './SidePanel';
 function App() {
   const [data, setData] = useState([]);
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(false);
+  const [curNode, setCurNode] = useState(  { id: '1', position: { x: 0, y: 0 }, type: 'mindmap', data: { label: 'Browsing' }});
+
+
+  const handleNodeClick = (event, node)=>{
+    console.log('Node clicked:', node);
+    setCurNode(node);
+  
+  }
+
   useEffect(()=>{
     const fetchData = async ()=>{
       setIsPending(true);
@@ -18,9 +28,12 @@ function App() {
 
     fetchData();
   },[]);
+  
+  
   return (
-    <div>
-      <ReactflowMap/>
+    <div className='container'>
+      <ReactflowMap handleNodeClick = {handleNodeClick}/>
+      <SidePanel node = {curNode}></SidePanel>
     </div>
   )
 }

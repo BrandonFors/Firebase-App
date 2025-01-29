@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactFlow, { Panel, Controls, Background, ConnectionLineType } from 'reactflow';
+import React, { useState } from 'react';
+import ReactFlow, { Panel, Controls, Background, ConnectionLineType} from 'reactflow';
 import 'reactflow/dist/style.css';
 import MindMapEdge from './MindmapEdge';
 import MindMapNode from './MindmapNode';
 
-// Custom node and edge types
+
 const nodeTypes = {
   mindmap: MindMapNode,
 };
@@ -13,17 +13,17 @@ const edgeTypes = {
   mindmap: MindMapEdge,
 };
 
-// Sample nodes and edges
 const nodes = [
   { id: '1', position: { x: 0, y: 0 }, type: 'mindmap', data: { label: 'Browsing' } },
   { id: '2', position: { x: 100, y: 100 }, type: 'mindmap', data: { label: 'Focus 1' } },
   { id: '3', position: { x: -100, y: 100 }, type: 'mindmap', data: { label: 'Focus 2' } },
   { id: '4', position: { x: 0, y: -100 }, type: 'mindmap', data: { label: 'Focus 3' } },
-  { id: '5', position: { x: 300, y: 100 }, type: 'mindmap', data: { label: 'Detail 1' } },
+  { id: '5', position: { x: 200, y: 100 }, type: 'mindmap', data: { label: 'Detail 1' } },
   { id: '6', position: { x: 100, y: 200 }, type: 'mindmap', data: { label: 'Detail 2' } },
-  { id: '7', position: { x: -300, y: 100 }, type: 'mindmap', data: { label: 'Detail 1' } },
+  { id: '7', position: { x: -200, y: 100 }, type: 'mindmap', data: { label: 'Detail 1' } },
   { id: '8', position: { x: 100, y: -150 }, type: 'mindmap', data: { label: 'Detail 1' } },
   { id: '9', position: { x: -100, y: -150 }, type: 'mindmap', data: { label: 'Detail 2' } },
+  { id: '10', position: { x: 150, y: 150 }, type: 'mindmap', data: { label: 'Detail 3' } },
 ];
 
 const edges = [
@@ -35,15 +35,23 @@ const edges = [
   { id: 'e3-7', source: '3', target: '7', type: 'straight' },
   { id: 'e4-8', source: '4', target: '8', type: 'straight' },
   { id: 'e4-9', source: '4', target: '9', type: 'straight' },
+  { id: 'e2-10', source: '2', target: '10', type: 'straight' },
 ];
 
 // Edge styling
 const connectionLineStyle = { stroke: '#F6AD55', strokeWidth: 3 };
 const defaultEdgeOptions = { style: connectionLineStyle, type: 'mindmap' };
 
-const ReactflowMap = () => {
+
+function ReactflowMap(props){
+  // const [nodes, setNodes] = useState(nodes);
+  // const [edges, setEdges] = useState(edges);
+
+
+
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
+
+    <div className='reactflow-map'>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -51,7 +59,9 @@ const ReactflowMap = () => {
         edgeTypes={edgeTypes}
         defaultEdgeOptions={defaultEdgeOptions}
         connectionLineType={ConnectionLineType.Straight}
+        onNodeClick={props.handleNodeClick}
         fitView
+        
       >
         <Background />
         <Controls />

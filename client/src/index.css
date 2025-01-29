@@ -18,6 +18,22 @@ body,
 #root {
   height: 100%;
 }
+
+.container{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.reactflow-map{
+
+  width: 75vw;
+  height: 100vh;
+}
+.side-panel{
+  width:25vw;
+  height: 100vh;
+}
  
 .react-flow__node-mindmap {
   background: #f6ad55;
@@ -47,4 +63,9 @@ body,
   background: transparent;
   border-radius: 0px;
   border: none;
+}
+
+img{
+  width: 20vw;
+  height: auto;
 }
